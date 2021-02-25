@@ -1,5 +1,6 @@
 package com.personal.study.basicauthorizationapp.commons.secutiry;
 
+import com.personal.study.basicauthorizationapp.commons.secutiry.entities.SecurityRoles;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,13 @@ public class AuthorizationUtils {
     private SecurityRoles getSecurityRoles(final String role) {
         final String formattedRole = role.replace("ROLE_", "");
         return SecurityRoles.valueOf(formattedRole);
+    }
+
+    public boolean isAdmin() {
+        return SecurityContextHolder.getContext().getAuthentication().getAuthorities()
+            .stream()
+            .map(GrantedAuthority::getAuthority)
+            .anyMatch(role -> SecurityRoles.ADMIN.equals(getSecurityRoles(role)));
     }
 
 }
