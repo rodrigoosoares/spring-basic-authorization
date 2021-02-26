@@ -1,23 +1,27 @@
 package com.personal.study.basicauthorizationapp.entities;
 
 import com.personal.study.basicauthorizationapp.commons.secutiry.entities.SecurityRoles;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
+@Document("user")
 public class User {
 
-    private Integer id;
+    @Id
+    private String id;
     private String username;
     private String password;
     private List<SecurityRoles> roles;
 
     public User() {}
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -51,7 +55,7 @@ public class User {
             this.user = user;
         }
 
-        public UserBuilder id(Integer id) {
+        public UserBuilder id(String id) {
             user.setId(id);
             return this;
         }
