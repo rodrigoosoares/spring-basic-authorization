@@ -1,35 +1,31 @@
-package com.personal.study.basicauthorizationapp.commons.config;
+package com.personal.study.basicauthorizationapp.commons.secutiry.config;
 
 import com.personal.study.basicauthorizationapp.commons.secutiry.CsrfRequestMatcher;
 import com.personal.study.basicauthorizationapp.commons.secutiry.entities.HttpRequest;
+import com.personal.study.basicauthorizationapp.commons.secutiry.services.MongoUserDetailsService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.RequestMatcher;
-
-import static com.personal.study.basicauthorizationapp.commons.secutiry.entities.SecurityRoles.ADMIN;
-import static com.personal.study.basicauthorizationapp.commons.secutiry.entities.SecurityRoles.USER;
 
 @Configuration
 @EnableWebSecurity
 public class BasicAuthConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private MongoUserDetailsService mongoUserDetailsService;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-        auth.inMemoryAuthentication()
-                .withUser("admin")
-                .password(encoder.encode("admin"))
-                .roles(ADMIN.name(), USER.name())
-                .and()
-                .withUser("user")
-                .password(encoder.encode("user"))
-                .roles(USER.name());
+        auth.userDetailsService(mongoUserDetailsService)
+            .passwordEncoder(passwordEncoder());
     }
 
     @Override
@@ -48,5 +44,8 @@ public class BasicAuthConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic(); // Enable basic authentication
     }
 
-
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 }

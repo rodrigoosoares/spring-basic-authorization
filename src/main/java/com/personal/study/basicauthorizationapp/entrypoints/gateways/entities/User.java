@@ -1,4 +1,4 @@
-package com.personal.study.basicauthorizationapp.entities;
+package com.personal.study.basicauthorizationapp.entrypoints.gateways.entities;
 
 import com.personal.study.basicauthorizationapp.commons.secutiry.entities.SecurityRoles;
 import org.springframework.data.annotation.Id;
@@ -45,8 +45,17 @@ public class User {
         return new UserBuilder(new User());
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+            "id='" + id + '\'' +
+            ", username='" + username + '\'' +
+            ", password=[PROTECTED] " +
+            ", roles=" + roles +
+            '}';
+    }
 
-//    Builder class
+    //    Builder class
     public static class UserBuilder {
 
         private final User user;
@@ -60,13 +69,18 @@ public class User {
             return this;
         }
 
-        public UserBuilder name(String name) {
+        public UserBuilder username(String name) {
             user.setUsername(name);
             return this;
         }
 
         public UserBuilder password(String password) {
             user.setPassword(password);
+            return this;
+        }
+
+        public UserBuilder roles(List<SecurityRoles> roles) {
+            user.setRoles(roles);
             return this;
         }
 
