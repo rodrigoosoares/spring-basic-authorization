@@ -29,7 +29,7 @@ public class AuthorizationUtils {
         return SecurityContextHolder.getContext().getAuthentication().getAuthorities()
             .stream()
             .map(GrantedAuthority::getAuthority)
-            .anyMatch(role -> SecurityRoles.ADMIN.equals(getSecurityRoles(role)));
+            .anyMatch(role -> SecurityRoles.ROLE_ADMIN.equals(getSecurityRoles(role)));
     }
 
 }

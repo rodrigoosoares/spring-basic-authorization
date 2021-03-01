@@ -22,7 +22,7 @@ public class CreateUser {
 
     private void addUserDefaultRole(final User user) {
         user.setRoles(
-            List.of(SecurityRoles.USER)
+            List.of(SecurityRoles.ROLE_USER)
         );
     }
 

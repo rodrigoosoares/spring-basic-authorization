@@ -1,6 +1,6 @@
 package com.personal.study.basicauthorizationapp.commons.secutiry.entities;
 
 public enum SecurityRoles {
-    ADMIN,
-    USER
+    ROLE_ADMIN,
+    ROLE_USER
 }
