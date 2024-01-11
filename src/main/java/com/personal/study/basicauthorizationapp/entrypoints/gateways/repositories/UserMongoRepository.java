@@ -12,8 +12,12 @@ import java.util.Optional;
 @Repository
 public class UserMongoRepository {
 
-    @Autowired
-    private MongoOperations mongoOperations;
+    private final MongoOperations mongoOperations;
+
+    public UserMongoRepository(MongoOperations mongoOperations) {
+
+        this.mongoOperations = mongoOperations;
+    }
 
     public Optional<User> findByUsername(final String username) {
         final Query query = new Query();

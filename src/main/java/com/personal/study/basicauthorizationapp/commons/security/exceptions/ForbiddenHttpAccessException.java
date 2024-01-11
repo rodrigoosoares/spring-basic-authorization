@@ -1,4 +1,4 @@
-package com.personal.study.basicauthorizationapp.commons.secutiry.exceptions;
+package com.personal.study.basicauthorizationapp.commons.security.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

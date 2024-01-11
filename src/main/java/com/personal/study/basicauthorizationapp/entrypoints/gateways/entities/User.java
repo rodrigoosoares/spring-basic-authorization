@@ -1,6 +1,6 @@
 package com.personal.study.basicauthorizationapp.entrypoints.gateways.entities;
 
-import com.personal.study.basicauthorizationapp.commons.secutiry.entities.SecurityRoles;
+import com.personal.study.basicauthorizationapp.commons.security.entities.SecurityRoles;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 

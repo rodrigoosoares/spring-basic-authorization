@@ -11,8 +11,12 @@ import java.util.Optional;
 @Service
 public class UserGatewayMongoImpl implements UserGateway {
 
-    @Autowired
-    private UserMongoRepository userMongoRepository;
+    private final UserMongoRepository userMongoRepository;
+
+    public UserGatewayMongoImpl(UserMongoRepository userMongoRepository) {
+
+        this.userMongoRepository = userMongoRepository;
+    }
 
     @Override
     public Optional<User> getUserInfoByUsername(String username) {

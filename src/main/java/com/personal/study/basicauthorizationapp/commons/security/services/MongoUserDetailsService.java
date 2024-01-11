@@ -1,4 +1,4 @@
-package com.personal.study.basicauthorizationapp.commons.secutiry.services;
+package com.personal.study.basicauthorizationapp.commons.security.services;
 
 import com.personal.study.basicauthorizationapp.entrypoints.gateways.entities.User;
 import com.personal.study.basicauthorizationapp.entrypoints.gateways.repositories.UserMongoRepository;
@@ -21,7 +21,9 @@ public class MongoUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
         final Optional<User> userOpt = userMongoRepository.findByUsername(username);
+
         if(userOpt.isPresent()) {
             final User user = userOpt.get();
             final List<SimpleGrantedAuthority> authorities = new ArrayList<>();

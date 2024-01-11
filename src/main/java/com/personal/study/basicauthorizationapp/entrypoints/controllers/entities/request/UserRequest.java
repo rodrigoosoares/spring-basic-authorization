@@ -1,6 +1,6 @@
 package com.personal.study.basicauthorizationapp.entrypoints.controllers.entities.request;
 
-import com.personal.study.basicauthorizationapp.commons.secutiry.entities.SecurityRoles;
+import com.personal.study.basicauthorizationapp.commons.security.entities.SecurityRoles;
 
 import java.util.List;
 

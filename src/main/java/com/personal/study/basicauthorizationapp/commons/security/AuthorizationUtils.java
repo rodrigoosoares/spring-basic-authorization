@@ -1,6 +1,6 @@
-package com.personal.study.basicauthorizationapp.commons.secutiry;
+package com.personal.study.basicauthorizationapp.commons.security;
 
-import com.personal.study.basicauthorizationapp.commons.secutiry.entities.SecurityRoles;
+import com.personal.study.basicauthorizationapp.commons.security.entities.SecurityRoles;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -9,8 +9,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class AuthorizationUtils {
+class AuthorizationUtils {
 
+    // TODO I think I can remove this class
     public List<SecurityRoles> getUserRoles() {
         return SecurityContextHolder.getContext().getAuthentication().getAuthorities()
                 .stream()
@@ -29,7 +30,7 @@ public class AuthorizationUtils {
         return SecurityContextHolder.getContext().getAuthentication().getAuthorities()
             .stream()
             .map(GrantedAuthority::getAuthority)
-            .anyMatch(role -> SecurityRoles.ROLE_ADMIN.equals(getSecurityRoles(role)));
+            .anyMatch(role -> SecurityRoles.ADMIN.equals(getSecurityRoles(role)));
     }
 
 }

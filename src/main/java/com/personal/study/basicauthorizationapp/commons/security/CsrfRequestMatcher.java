@@ -1,10 +1,10 @@
-package com.personal.study.basicauthorizationapp.commons.secutiry;
+package com.personal.study.basicauthorizationapp.commons.security;
 
-import com.personal.study.basicauthorizationapp.commons.secutiry.entities.HttpRequest;
+import com.personal.study.basicauthorizationapp.commons.security.entities.HttpRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.personal.study.basicauthorizationapp.commons.secutiry.entities;
+package com.personal.study.basicauthorizationapp.commons.security.entities;
 
 public class HttpRequest {
 

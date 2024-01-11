@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 public class BasicAuthAppApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(BasicAuthAppApplication.class, args);
 	}
 
